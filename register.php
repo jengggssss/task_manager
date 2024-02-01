@@ -40,6 +40,7 @@ mysqli_close($conn);
     body {
         background: url('download 1.jpeg');
         background-size: cover;
+    }
     .container {
         
         padding: 20px; 
@@ -61,7 +62,14 @@ mysqli_close($conn);
     .form-element {
         margin-bottom: 15px; 
     }
-}
+    .show-password-icon {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
 </style>
 </head>
 <body>
@@ -76,13 +84,20 @@ mysqli_close($conn);
             <div class="form-element my-4">
                 <input type="text" class="form-control" name="username" placeholder="Username" required>
             </div>
-            <div class="form-element my-4">
-                <input type="password" class="form-control" name="password" placeholder="Password" required>
+            <div class="form-element my-4 position-relative">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                <i class="show-password-icon" onclick="togglePasswordVisibility('password')">Show Password</i>
             </div>
             <div class="form-element">
                 <input type="submit" class="btn btn-success" name="register" value="Register">
             </div>
         </form>
     </div>
+    <script>
+        function togglePasswordVisibility(passwordFieldId) {
+            var passwordField = document.getElementById(passwordFieldId);
+            passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+        }
+    </script>
 </body>
 </html>
